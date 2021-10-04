@@ -10,7 +10,7 @@ echo "Namespace: ${NAMESPACE}"
 RESULT_SERVICE_PORT=${RANDOM_NUMBER}
 echo "Results URL http://<IP>:${RESULT_SERVICE_PORT}"
 VOTE_SERVICE_PORT=$(( $RANDOM_NUMBER + 1 ))
-echo "Results URL http://<IP>:${VOTE_SERVICE_PORT}"
+echo "Voting URL http://<IP>:${VOTE_SERVICE_PORT}"
 echo ""
 
 export NAMESPACE
