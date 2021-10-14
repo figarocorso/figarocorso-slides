@@ -182,14 +182,6 @@ spec:
 ---
 
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: vote
-  
-  
----
-
-apiVersion: v1
 kind: Service
 metadata:
   labels:
