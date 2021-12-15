@@ -109,7 +109,7 @@ $ k9s
 
 Check the public IP column there 😜
 
-## Let's open your favourite browoser
+## Let's open your favourite browser
 
 * Current poll results (live update): http://[public IP]:<APP_ID>
 * Voting UI: http://[public IP]:<APP_ID + 1>
@@ -125,7 +125,7 @@ Check the public IP column there 😜
 
 # Debug our application
 
-## Listing your applilcation pods
+## Listing your application pods
 
 ```bash
 🐶> :namespaces  # List namespaces (alias :ns)
@@ -180,7 +180,7 @@ You are at VIM, so save changes and exit with `:wq`
 ## Is it already working?
 
 * Try to change your vote, is result being updated?
-* Kill the result pod so it reconnects to the DB
+* If the app is not working it might be necessary to kill the result pod so it reconnects to the DB.:
 
 ---
 
