@@ -209,11 +209,11 @@ $ SELECT * FROM votes;
 
 # Trying out xray
 
-Let's swith to our beloved `sysdigcloud` namespace:
+Let's switch to our beloved `sysdigcloud` namespace:
 
 ```bash
 🐶> :namespaces  # List namespaces (alias :ns)
-🐶> /sysdigcloud # plust <ENTER> to confir filter
+🐶> /sysdigcloud # press <ENTER> to confirm filter
 🐶> <ENTER>  # to list namespace pods
 🐶> :xray deployments
 🐶> :xray pods
@@ -224,4 +224,48 @@ Let's swith to our beloved `sysdigcloud` namespace:
 
 ---
 
-# Port forwarding
+# Extra Ball: Port forwarding
+
+We can use k9s to establish a port-forward. We will use this feature to access a private API endpoint from our local machine.
+
+```bash
+🐶> :pods # List pods
+# Select meerkat-api pod
+🐶> :d # press d to see pod description
+# Look for the readiness probe port
+# Go back to pod list
+# Highlight meerkat-api pod
+🐶> :Shift + f # Open the new port forward dialog
+Container port: <actuator_port>
+Local Port: 29111
+Address localhost
+# Hit OK
+```
+
+This opens a port forward from your local port directly to meerekat-api container port.
+
+Now we can reach that private API port directly. Open a **new terminal** and do the following:
+
+```bash
+🐶> curl localhost:29111/actuator/health
+```
+
+The port forward will be destroyed when we exit k9s, but you can also:
+
+```bash
+🐶> :pods # List pods
+# Highlight meerkat-api pod
+🐶> :f # Press f to select the port forward
+🐶> control + d # Delete the port forward
+```
+
+---
+
+# Extra Ball: Popeye
+
+```bash
+🐶> :popeye
+🐶> :<ENTER> # Hit enter and wait for results
+```
+
+The popeye tool will show problems and warnings detected in the cluster.
