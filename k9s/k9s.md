@@ -1,4 +1,5 @@
 ---
+
 date: ""
 author: Platform Team
 theme: https://github.com/maaslalani/slides/raw/main/styles/theme.json
@@ -27,6 +28,7 @@ paging: Page %d of %d
 $ docker run -it -v $HOME/.aws:/aws -v $HOME/.kube:/kube docker.internal.sysdig.com/utils/gimme-aws-creds:latest
 $ export AWS_PROFILE=draios-dev-developer
 $ aws s3 ls # test connection
+$ aws sts get-caller-identity # who you are ;-)
 ```
 
 ## Run osc.py export
@@ -37,6 +39,9 @@ $ python osc.py list | grep demo
 $ python osc.py export qa-workshop-demo
 ```
 
+Did it fail complaining about `CA private key was not found`?
+Just download latest kops (1.22+): https://kops.sigs.k8s.io/getting_started/install/
+
 ## Check K8s API connection
 
 ```
@@ -46,6 +51,11 @@ $ kubectl get nodes -o wide
 ---
 
 # Create custom application
+
+Download voting app scripts or clone https://github.com/figarocorso/figarocorso-slides :
+
+* https://raw.githubusercontent.com/figarocorso/figarocorso-slides/main/k9s/example-voting-app.yaml.tpl
+* https://raw.githubusercontent.com/figarocorso/figarocorso-slides/main/k9s/deploy_custom_vote_app.sh
 
 ```bash
 $ ./deploy_custom_vote_app.sh 
@@ -75,6 +85,7 @@ If we have any error saying port is already in use or so, it looks like we weren
 ## Install or download the binary
 
 * You can install K9s using brew, port, pacman, scoop, choco: https://k9scli.io/topics/install/
+
 Or... download the binary
 * Go to K9s Github project and download the binary for your workstation: https://github.com/derailed/k9s/releases/tag/v0.24.15
   * Linux x86_64: https://github.com/derailed/k9s/releases/download/v0.24.15/k9s_Linux_x86_64.tar.gz
@@ -107,7 +118,7 @@ $ k9s
 🐶> control + w  # toggle wide mode
 ```
 
-Check the public IP column there 😜
+Check the public IP column there (any node public IP should work 😜)
 
 ## Let's open your favourite browser
 
@@ -220,7 +231,9 @@ Let's switch to our beloved `sysdigcloud` namespace:
 ```
 
 * Could we see a secret?
+  * Select a secret `<ENTER>` and press `x` to decode
 * What about a config map?
+  * Select a secret `<ENTER>` and press `y` to validate its contents
 
 ---
 
@@ -250,6 +263,10 @@ Now we can reach that private API port directly. Open a **new terminal** and do 
 🐶> curl localhost:29111/actuator/health
 ```
 
+---
+
+# Extra Ball: Delete port forwarding
+
 The port forward will be destroyed when we exit k9s, but you can also:
 
 ```bash
@@ -269,3 +286,7 @@ The port forward will be destroyed when we exit k9s, but you can also:
 ```
 
 The popeye tool will show problems and warnings detected in the cluster.
+
+---
+
+# That's all! Q&A time
