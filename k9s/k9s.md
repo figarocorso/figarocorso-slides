@@ -244,12 +244,12 @@ We can use k9s to establish a port-forward. We will use this feature to access a
 ```bash
 🐶> :pods # List pods
 # Select meerkat-api pod
-🐶> :d # press d to see pod description
+🐶> d # press d to see pod description
 # Look for the readiness probe port
 # Go back to pod list
 # Highlight meerkat-api pod
-🐶> :Shift + f # Open the new port forward dialog
-Container port: <actuator_port>
+🐶> <SHIFT> + f # Open the new port forward dialog
+Container port: <actuator_port> # should probably be `9111`
 Local Port: 29111
 Address localhost
 # Hit OK
@@ -272,8 +272,8 @@ The port forward will be destroyed when we exit k9s, but you can also:
 ```bash
 🐶> :pods # List pods
 # Highlight meerkat-api pod
-🐶> :f # Press f to select the port forward
-🐶> control + d # Delete the port forward
+🐶> f # Press f to select the port forward
+🐶> <CONTROL> + d # Delete the port forward
 ```
 
 ---
